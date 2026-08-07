@@ -16,30 +16,30 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
+      header: Libre Baskerville
+      body: Newsreader
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        light: "#F7F4EC"
+        lightgray: "#E3DED2"
+        gray: "#756F64"
+        darkgray: "#4A4842"
+        dark: "#35342F"
+        secondary: "#6B3A3A"
+        tertiary: "#8A5A5A"
+        highlight: "#EDE5D7"
+        textHighlight: "#E6D9C488"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        light: "#252522"
+        lightgray: "#393934"
+        gray: "#A9A59A"
+        darkgray: "#D7D3C8"
+        dark: "#E8E4DA"
+        secondary: "#C28C8C"
+        tertiary: "#D1A3A3"
+        highlight: "#3A342E"
+        textHighlight: "#51463A88"
 plugins:
   - source: "@quartz-community/created-modified-date"
     enabled: true
