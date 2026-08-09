@@ -56,3 +56,13 @@ $desktopGrid: (
       "grid-sidebar-left grid-center grid-sidebar-right"\
       "grid-sidebar-left grid-footer grid-sidebar-right"',
 );
+
+:root {
+  --paper: var(--light);
+  --paper-alt: var(--lightgray);
+  --ink: var(--dark);
+  --ink-soft: var(--gray);
+  --accent: var(--secondary);
+  --accent-light: var(--tertiary);
+  --rule: var(--lightgray);
+}

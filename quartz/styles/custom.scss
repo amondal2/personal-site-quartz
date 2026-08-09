@@ -1,22 +1,9 @@
 @use "./variables.scss" as *;
 
 /* ==========================================================
-   Kanagawa Paper — Editorial
+   Kanagawa Paper — Minimalist Blog Style
+   Inspired by fromjason.xyz
    ========================================================== */
-
-:root {
-  --paper: #f7f4ec;
-  --paper-alt: #eee9de;
-
-  --ink: #35342f;
-  --ink-soft: #756f64;
-
-  --accent: #6b3a3a;
-  --accent-light: #8a5a5a;
-
-  --rule: #d8d1c4;
-}
-
 
 /* ==========================================================
    BASE TYPOGRAPHY
@@ -25,156 +12,142 @@
 body {
   background: var(--paper);
   color: var(--ink);
-
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 1.08rem;
-  line-height: 1.72;
-  letter-spacing: 0;
+  font-family: var(--bodyFont), Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
 }
-
 
 /* ==========================================================
    HEADINGS
    ========================================================== */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Libre Baskerville", Georgia, serif;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--headerFont), Georgia, serif;
   font-weight: 400;
   color: var(--ink);
   letter-spacing: -0.015em;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   line-height: 1.2;
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   line-height: 1.3;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.55rem;
-
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--rule);
 }
 
 h3 {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   line-height: 1.35;
-  margin-top: 2.25rem;
-}
-
-h4 {
-  font-size: 1.15rem;
-  line-height: 1.4;
   margin-top: 2rem;
 }
 
-h5 {
-  font-size: 1.05rem;
+h4 {
+  font-size: 1.1rem;
   line-height: 1.4;
   margin-top: 1.75rem;
 }
 
-h6 {
-  font-size: 0.95rem;
+h5 {
+  font-size: 1rem;
   line-height: 1.4;
   margin-top: 1.5rem;
+}
 
+h6 {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-top: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--ink-soft);
 }
 
+/* ==========================================================
+   LAYOUT
+   ========================================================== */
+
+.sidebar,
+.toolbar,
+.left,
+.right {
+  display: none !important;
+}
+
+body #quartz-body {
+  display: block !important;
+}
+
+.center {
+  max-width: 650px !important;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  align-items: center;
+}
+
+.center > *:not(.page-header):not(.page-footer):not(hr) {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+article {
+  padding-top: 0.5rem;
+  padding-bottom: 3rem;
+}
+
+article p {
+  margin-top: 0;
+  margin-bottom: 1.35rem;
+}
 
 /* ==========================================================
    ARTICLE TITLE
    ========================================================== */
 
 .article-title {
-  font-family: "Libre Baskerville", Georgia, serif;
+  font-family: var(--headerFont), Georgia, serif;
   font-weight: 400;
-  font-size: 2.65rem;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
-
 
 /* ==========================================================
-   PAGE TITLE (sidebar site name)
+   SITE NAV
    ========================================================== */
 
-.page-title {
+.site-nav {
+  text-align: center;
+  margin: 0.75rem 0 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.85rem;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
 
-  font-family: "Libre Baskerville", Georgia, serif;
-  font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 1.2;
-  letter-spacing: -0.015em;
-
-  color: var(--ink);
+.site-nav a {
+  color: var(--ink-soft);
   text-decoration: none;
+  font-size: 0.9rem;
 }
 
-/* Logo banner slot — drop your file in quartz/static/ and point this
-   at it. Height is fixed so the sidebar doesn't reflow once the real
-   image is in place; background-size: contain keeps it from cropping
-   regardless of the logo's aspect ratio. */
-.page-title::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 90px;
-
-  background-image: url("/static/logo.svg");
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: contain;
-}
-
-/* Optional: swap in a light-on-dark variant if you make one.
-   Delete this block if you'd rather use one logo for both modes. */
-[saved-theme="dark"] .page-title::before {
-  background-image: url("/static/logo-dark.svg");
-}
-
-.page-title:hover {
+.site-nav a:hover {
   color: var(--accent);
 }
-
-
-/* ==========================================================
-   ARTICLE LAYOUT
-   ========================================================== */
-
-.center {
-  max-width: 1500px;
-}
-
-.center > article {
-  max-width: 820px;
-}
-
-article {
-  padding-top: 1.5rem;
-  padding-bottom: 5rem;
-}
-
-article p {
-  margin-top: 0;
-  margin-bottom: 1.45rem;
-}
-
 
 /* ==========================================================
    METADATA
@@ -182,11 +155,19 @@ article p {
 
 .content-meta {
   color: var(--ink-soft);
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.035em;
+  font-family: var(--bodyFont), sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
 }
 
+.index-page .content-meta {
+  display: none !important;
+}
+
+.reading-time,
+.content-meta .reading-time {
+  display: none !important;
+}
 
 /* ==========================================================
    LINKS
@@ -202,6 +183,12 @@ a:hover {
   color: var(--accent-light);
 }
 
+/* Kill Quartz's default pill-highlight treatment on internal links */
+a.internal {
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
 
 /* ==========================================================
    HORIZONTAL RULES
@@ -213,7 +200,6 @@ hr {
   margin: 2.5rem 0;
 }
 
-
 /* ==========================================================
    BLOCKQUOTES
    ========================================================== */
@@ -221,135 +207,135 @@ hr {
 blockquote {
   border-left: 2px solid var(--accent);
   background: transparent;
-
   color: var(--ink-soft);
-
-  font-family: "Newsreader", Georgia, serif;
+  font-family: var(--bodyFont), sans-serif;
   font-size: 1rem;
   font-style: italic;
-
   margin: 2rem 0;
   padding: 0.25rem 1.5rem;
 }
 
-
-
 /* ==========================================================
-   EXPLORER
+   MANUAL POST LIST
    ========================================================== */
 
-/*
- * Quartz handles the Explorer's layout, responsive behavior,
- * and collapse state. These rules only customize appearance.
- */
-
-.explorer {
-  font-family: "Newsreader", Georgia, serif;
-}
-
-/* Explorer toggle */
-
-.explorer button.mobile-explorer,
-.explorer button.desktop-explorer {
-  background: transparent;
-  border: none;
-  color: var(--ink);
-
-  font-family: "Newsreader", Georgia, serif;
-  text-align: left;
-  cursor: pointer;
-
+.post-list {
+  margin: 1.5rem 0;
   padding: 0;
 }
 
-/* Explorer title */
-
-.explorer button.desktop-explorer h2 {
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.2;
-
-  margin: 0;
-  padding: 0;
-
-  border: none;
-
-  color: var(--ink);
+.post-item {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
 }
 
-/* Chevron */
-
-.explorer .fold {
-  margin-left: 0.45rem;
-  opacity: 0.65;
+.post-item:last-child {
+  border-bottom: none;
 }
 
-
-/* ----------------------------------------------------------
-   Explorer file tree
-   ---------------------------------------------------------- */
-
-.explorer-content {
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 0.95rem;
-}
-
-.explorer-content ul {
-  list-style: none;
-}
-
-.explorer-content a {
+.post-item a {
   color: var(--ink);
   text-decoration: none;
+  font-size: 1.05rem;
+  flex: 1;
 }
 
-.explorer-content a:hover {
+.post-item a:hover {
   color: var(--accent);
 }
 
-.explorer .folder-container span {
-  color: var(--ink);
+.post-item .post-date {
+  color: var(--ink-soft);
+  font-family: var(--bodyFont), sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
+@media (max-width: 600px) {
+  .post-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
 
-/* ----------------------------------------------------------
-   Dark mode
-   ---------------------------------------------------------- */
-
-[saved-theme="dark"] .explorer button.mobile-explorer,
-[saved-theme="dark"] .explorer button.desktop-explorer,
-[saved-theme="dark"] .explorer button.desktop-explorer h2 {
-  color: var(--ink);
+  .post-item .post-date {
+    font-size: 0.75rem;
+  }
 }
-
-[saved-theme="dark"] .explorer-content a,
-[saved-theme="dark"] .explorer .folder-container span {
-  color: var(--ink);
-}
-
-
 
 /* ==========================================================
-   SIDEBAR
+   FOLDER PAGE LISTING (All Posts)
    ========================================================== */
 
-.sidebar {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 0.9rem;
+.folder-ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
 }
 
-.sidebar h3 {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
+.folder-ul li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
 
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.folder-ul li:last-child {
+  border-bottom: none;
+}
 
+.folder-ul li a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 1.05rem;
+  flex: 1;
+}
+
+.folder-ul li a:hover {
+  color: var(--accent);
+}
+
+.folder-ul li .meta {
   color: var(--ink-soft);
+  font-family: var(--bodyFont), sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
+@media (max-width: 600px) {
+  .folder-ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .folder-ul li .meta {
+    font-size: 0.75rem;
+  }
+}
+
+/* ==========================================================
+   HIDE UNWANTED ELEMENTS ON HOMEPAGE
+   ========================================================== */
+
+.index-page .breadcrumbs {
+  display: none !important;
+}
+
+.index-page .section-ul,
+.index-page .folder-ul {
+  display: none !important;
+}
 
 /* ==========================================================
    TAGS
@@ -357,15 +343,12 @@ blockquote {
 
 a.tag-link {
   color: var(--accent);
-
   background: transparent;
   border: 1px solid var(--rule);
   border-radius: 2px;
-
   padding: 0.15rem 0.45rem;
-
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 0.8rem;
+  font-family: var(--bodyFont), sans-serif;
+  font-size: 0.75rem;
 }
 
 a.tag-link:hover {
@@ -373,14 +356,12 @@ a.tag-link:hover {
   border-color: var(--accent-light);
 }
 
-
 /* ==========================================================
    CODE
    ========================================================== */
 
-code,
-pre {
-  font-family: "IBM Plex Mono", monospace;
+code, pre {
+  font-family: var(--codeFont), monospace;
 }
 
 code {
@@ -391,7 +372,6 @@ pre {
   border: 1px solid var(--rule);
   border-radius: 2px;
 }
-
 
 /* ==========================================================
    IMAGES
@@ -407,23 +387,11 @@ article figure {
 
 article figcaption {
   color: var(--ink-soft);
-
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 0.82rem;
-
+  font-family: var(--bodyFont), sans-serif;
+  font-size: 0.8rem;
   text-align: center;
   margin-top: 0.6rem;
 }
-
-
-/* ==========================================================
-   SEARCH
-   ========================================================== */
-
-.search {
-  border-radius: 2px;
-}
-
 
 /* ==========================================================
    CALLOUTS
@@ -433,41 +401,61 @@ article figcaption {
   border-radius: 2px;
 }
 
-
 /* ==========================================================
-   DARK MODE
+   MARKDOWN "FIRST PARAGRAPH" STYLING (for pages that still
+   want an italic lede, e.g. index.md's welcome line)
    ========================================================== */
 
-[saved-theme="dark"] {
-  --paper: #252522;
-  --paper-alt: #2d2d29;
-
-  --ink: #d7d3c8;
-  --ink-soft: #a9a59a;
-
-  --accent: #c28c8c;
-  --accent-light: #d1a3a3;
-
-  --rule: #46443e;
+article > p:first-of-type {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
 }
 
-[saved-theme="dark"] body {
-  background: var(--paper);
-  color: var(--ink);
+/* ==========================================================
+   SITE HEADER
+   ========================================================== */
+
+.page-header header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-[saved-theme="dark"] h1,
-[saved-theme="dark"] h2,
-[saved-theme="dark"] h3,
-[saved-theme="dark"] h4,
-[saved-theme="dark"] h5,
-[saved-theme="dark"] h6 {
-  color: var(--ink);
+.page-header header .site-logo {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1rem;
+  border: 1px dashed var(--ink-soft);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-[saved-theme="dark"]
-.explorer button.mobile-explorer h2,
-[saved-theme="dark"]
-.explorer button.desktop-explorer h2 {
+.page-header header h1 {
+  font-family: var(--headerFont), Georgia, serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin: 0;
+  width: 100%;
+}
+
+.page-header header h1 a {
   color: var(--ink);
+  text-decoration: none;
+}
+
+.page-header header h1 a:hover {
+  color: var(--accent);
 }

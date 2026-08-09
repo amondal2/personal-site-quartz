@@ -1,22 +1,20 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
-const Header: QuartzComponent = ({ children }: QuartzComponentProps) => {
-  return children.length > 0 ? <header>{children}</header> : null
-}
-
-Header.css = `
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 2rem 0;
-  gap: 1.5rem;
-}
-
-header h1 {
-  margin: 0;
-  flex: auto;
-}
-`
-
-export default (() => Header) satisfies QuartzComponentConstructor
+export default (() => {
+  const Header: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
+    return (
+      <header>
+        {/* Placeholder logo — replace the div below with an <img src="/static/logo.svg" alt="" /> once your logo is ready */}
+        <div class="site-logo" aria-hidden="true"></div>
+        <h1><a href="/">{cfg.pageTitle || "Home"}</a></h1>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/posts">Writing</a>
+        </nav>
+      </header>
+    )
+  }
+  return Header
+}) satisfies QuartzComponentConstructor
