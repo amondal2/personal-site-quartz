@@ -5,7 +5,7 @@ export default (() => {
     return (
       <header>
         {/* Placeholder logo — replace the div below with an <img src="/static/logo.svg" alt="" /> once your logo is ready */}
-        <div class="site-logo" aria-hidden="true"></div>
+        <img width="200px" src="/static/logo.svg" alt="" /> 
         <h1><a href="/">{cfg.pageTitle || "Home"}</a></h1>
         <nav class="site-nav">
           <a href="/">Home</a>
