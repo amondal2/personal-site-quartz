@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: amondal2.github.io
+  baseUrl: amondal2.github.io/personal-site-quartz
   ignorePatterns:
     - private
     - templates
