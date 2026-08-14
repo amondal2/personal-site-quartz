@@ -60,6 +60,7 @@ plugins:
     enabled: true
     options:
       markdownLinkResolution: shortest
+      openLinksInNewTab: true
     order: 40
 
   - source: "github:quartz-community/description"
