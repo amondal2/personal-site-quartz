@@ -12,7 +12,7 @@ export default (() => {
         <h1><a href={basePath || "/"}>{cfg.pageTitle || "Home"}</a></h1>
         <nav class="site-nav">
           <a href={basePath || "/"}>Home</a>
-          <a href={`${basePath}/posts`}>Writing</a>
+          <a href={`${basePath}/posts/`}>Writing</a>
         </nav>
       </header>
     )
