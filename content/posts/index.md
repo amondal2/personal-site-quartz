@@ -13,4 +13,4 @@ I plan to occasionally write about tech, public health, and urbanism. Posts can 
 <!-- The folder-page plugin will automatically list all posts here -->
 
 > [!note] Use of artifical intelligence (AI)
-> I have used Claude Code to help build this site (mostly CSS and Typescript); all layouts, logos, and writing are my own.
+> This site was built with [Quartz](https://quartz.jzhao.xyz/) with minor help from Claude Code to tweak Typescript and CSS. All design and writing are my own.
